@@ -1,0 +1,106 @@
+entity Task {
+	title String required,
+	startDate Instant required,
+	endDate Instant required,
+	status Status required,
+	priority Priority required,
+	progress Progress required,
+	description String required,
+	createdAt Instant required,
+	updatedAt Instant required
+
+}
+entity TaskHistories {
+	comment String required,
+	status Status required,
+	createdAt Instant required,
+	updatedAt Instant required
+
+}
+entity TaskType {
+	title String required,
+	description String required,
+	createdAt Instant required,
+	updatedAt Instant required
+
+}
+entity Position {
+	name String required,
+	description String required,
+	createdAt Instant required,
+	updatedAt Instant required
+}
+entity Department {
+	name String required,
+	createdAt Instant required,
+	updatedAt Instant required
+}
+
+
+entity Institution {
+	name String required,
+	description String required,
+	createdAt Instant required,
+	updatedAt Instant required
+
+}
+entity Nst1Sector {
+	name String required,
+	description String required,
+	createdAt Instant required,
+	updatedAt Instant required
+}
+
+enum Status {
+    COMPLETED, ON_TRACK, OVER_DUE, OFF_TRACK
+}
+enum Priority {
+    HIGH, MEDIUM, LOW
+}
+
+enum Progress {
+    A, B, C, D, E
+}
+
+relationship ManyToMany {
+	Task{institution(name)}  to Institution{task(id)}
+	Task{Position(name)}  to Position{task(id)}
+}
+
+relationship OneToMany {
+	Task{taskHistories(id)} to TaskHistories{task(title)}
+    TaskType to Task {taskType(title)}
+    Nst1Sector to Task{nst1Sector(name)}
+    Department to Position{department(name)}
+}
+
+
+
+
+// Set pagination options
+paginate * with pagination
+
+// Use Data Transfer Objects (DTO)
+ dto * with mapstruct
+
+// Set service options to all except few
+service * with serviceImpl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
