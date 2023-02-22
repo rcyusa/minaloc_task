@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="task">
+      <h2 data-cy="taskDetailsHeading"><span>Task</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ task.id }}</span>
+        </dd>
+        <dt><span>Title</span></dt>
+        <dd>
+          <span>{{ task.title }}</span>
+        </dd>
+        <dt><span>Start Date</span></dt>
+        <dd>
+          <span>{{ task.startDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>End Date</span></dt>
+        <dd>
+          <span>{{ task.endDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+          <span>{{ task.status }}</span>
+        </dd>
+        <dt><span>Priority</span></dt>
+        <dd>
+          <span>{{ task.priority }}</span>
+        </dd>
+        <dt><span>Progress</span></dt>
+        <dd>
+          <span>{{ task.progress }}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+          <span>{{ task.description }}</span>
+        </dd>
+        <dt><span>Created At</span></dt>
+        <dd>
+          <span>{{ task.createdAt | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Updated At</span></dt>
+        <dd>
+          <span>{{ task.updatedAt | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Institution</span></dt>
+        <dd>
+          <span *ngFor="let institution of task.institutions; let last = last">
+            <a [routerLink]="['/institution', institution.id, 'view']">{{ institution.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span>Position</span></dt>
+        <dd>
+          <span *ngFor="let position of task.positions; let last = last">
+            <a [routerLink]="['/position', position.id, 'view']">{{ position.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span>Task Type</span></dt>
+        <dd>
+          <div *ngIf="task.taskType">
+            <a [routerLink]="['/task-type', task.taskType.id, 'view']">{{ task.taskType.title }}</a>
+          </div>
+        </dd>
+        <dt><span>Nst 1 Sector</span></dt>
+        <dd>
+          <div *ngIf="task.nst1Sector">
+            <a [routerLink]="['/nst-1-sector', task.nst1Sector.id, 'view']">{{ task.nst1Sector.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/task', task.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

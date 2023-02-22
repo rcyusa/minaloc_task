@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Task.
+    -->
+    <changeSet id="20230222183118-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="task_id"
+                                 baseTableName="rel_task__institution"
+                                 constraintName="fk_rel_task__institution__task_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task"/>
+
+        <addForeignKeyConstraint baseColumnNames="institution_id"
+                                 baseTableName="rel_task__institution"
+                                 constraintName="fk_rel_task__institution__institution_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="institution"/>
+
+        <addForeignKeyConstraint baseColumnNames="task_id"
+                                 baseTableName="rel_task__position"
+                                 constraintName="fk_rel_task__position__task_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task"/>
+
+        <addForeignKeyConstraint baseColumnNames="position_id"
+                                 baseTableName="rel_task__position"
+                                 constraintName="fk_rel_task__position__position_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="position"/>
+
+        <addForeignKeyConstraint baseColumnNames="task_type_id"
+                                 baseTableName="task"
+                                 constraintName="fk_task__task_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="nst1sector_id"
+                                 baseTableName="task"
+                                 constraintName="fk_task__nst1sector_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="nst_1_sector"/>
+    </changeSet>
+</databaseChangeLog>

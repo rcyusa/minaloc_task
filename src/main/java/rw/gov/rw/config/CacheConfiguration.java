@@ -48,6 +48,21 @@ public class CacheConfiguration {
             createCache(cm, rw.gov.rw.domain.User.class.getName());
             createCache(cm, rw.gov.rw.domain.Authority.class.getName());
             createCache(cm, rw.gov.rw.domain.User.class.getName() + ".authorities");
+            createCache(cm, rw.gov.rw.domain.Task.class.getName());
+            createCache(cm, rw.gov.rw.domain.Task.class.getName() + ".taskHistories");
+            createCache(cm, rw.gov.rw.domain.Task.class.getName() + ".institutions");
+            createCache(cm, rw.gov.rw.domain.Task.class.getName() + ".positions");
+            createCache(cm, rw.gov.rw.domain.TaskHistories.class.getName());
+            createCache(cm, rw.gov.rw.domain.TaskType.class.getName());
+            createCache(cm, rw.gov.rw.domain.TaskType.class.getName() + ".tasks");
+            createCache(cm, rw.gov.rw.domain.Position.class.getName());
+            createCache(cm, rw.gov.rw.domain.Position.class.getName() + ".tasks");
+            createCache(cm, rw.gov.rw.domain.Department.class.getName());
+            createCache(cm, rw.gov.rw.domain.Department.class.getName() + ".positions");
+            createCache(cm, rw.gov.rw.domain.Institution.class.getName());
+            createCache(cm, rw.gov.rw.domain.Institution.class.getName() + ".tasks");
+            createCache(cm, rw.gov.rw.domain.Nst1Sector.class.getName());
+            createCache(cm, rw.gov.rw.domain.Nst1Sector.class.getName() + ".tasks");
             // jhipster-needle-ehcache-add-entry
         };
     }
